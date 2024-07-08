@@ -362,7 +362,7 @@ def delete_customer_Account(acc_id):
 # POST /orders - add an order
 # PUT /orders/<id> - update an order by id
 # DELETE /orders/<id> - delete an order by id
-# For this one we use @app.method instead of @app.route showing we can use different methods
+# For this one we can use @app.method instead of @app.route showing we can use different methods
 
 # Get orders
 
@@ -444,30 +444,6 @@ def get_orders_custid():
         orders_with_products.append(order_dict)
 
     return jsonify(orders_with_products),200
-
-# @app.route("/orders/history", methods=["GET"])
-# def get_orders_custid():
-#     customer_id = request.args.get("customer_id")
-#     if not customer_id:
-#         return jsonify({"Error": "customer_id query parameter is required"}), 400
-
-#     with Session(db.engine) as session:
-#         query = select(Order).where(Order.customer_id == customer_id).order_by(Order.order_id.asc())
-#         orders = session.execute(query).scalars().all()
-#         if not orders:
-#             return jsonify({"Error": f"No orders found for customer_id {customer_id}"}), 404
-
-#         orders_with_products = []
-#         for order in orders:
-#             order_dict = {
-#                 "order_id": order.order_id,
-#                 "customer_id": order.customer_id,
-#                 "date": order.date,
-#                 "products": [{"product_id": p.product_id, "name": p.name} for p in order.products]
-#             }
-#             orders_with_products.append(order_dict)
-
-#     return jsonify(orders_with_products), 200
 
 ############################# update orders #########################
 
