@@ -94,6 +94,7 @@ API Documentation
 Detailed API documentation can be found in the application.py file with descriptions of each endpoint, request formats, and response formats.
 
 Post request Examples:
+.........................
 
 http://127.0.0.1:5000/customers
 body:
@@ -147,3 +148,183 @@ http://127.0.0.1:5000/customeraccount/3
 http://127.0.0.1:5000/orders/4
 
 http://127.0.0.1:5000/orders/1
+
+
+http://127.0.0.1:5000/products/1
+
+
+Get request:
+............
+
+http://127.0.0.1:5000/customers
+
+http://127.0.0.1:5000/orders
+
+Sample output:
+...............
+
+[
+	{
+		"customer_id": 1,
+		"date": "Sun, 07 Jul 2024 00:00:00 GMT",
+		"order_id": 1,
+		"products": [
+			"western wear"
+		]
+	},
+	{
+		"customer_id": 2,
+		"date": "Tue, 07 May 2024 00:00:00 GMT",
+		"order_id": 2,
+		"products": [
+			"western wear",
+			"Kitchen organizers"
+		]
+	},
+	{
+		"customer_id": 1,
+		"date": "Thu, 06 Jul 2023 00:00:00 GMT",
+		"order_id": 3,
+		"products": [
+			"formal wear",
+			"western wear"
+		]
+	},
+	{
+		"customer_id": 3,
+		"date": "Fri, 07 Jul 2023 00:00:00 GMT",
+		"order_id": 5,
+		"products": [
+			"western wear",
+			"Bathroom organizers"
+		]
+	}
+]
+
+get orders history:
+...................
+http://127.0.0.1:5000/orders/history?customer_id=2
+
+[
+	{
+		"customer_id": 2,
+		"date": "Tue, 07 May 2024 00:00:00 GMT",
+		"order_id": 2,
+		"products": [
+			{
+				"product name": "western wear",
+				"product_id": 2
+			},
+			{
+				"product name": "Kitchen organizers",
+				"product_id": 3
+			}
+		]
+	}
+]
+
+http://127.0.0.1:5000/products
+
+Sample output:
+...............
+
+[
+	{
+		"name": "formal wear",
+		"price": 30.0,
+		"product_id": 1,
+		"stock_level": 13
+	},
+	{
+		"name": "western wear",
+		"price": 323.44,
+		"product_id": 2,
+		"stock_level": 5
+	},
+	{
+		"name": "Kitchen organizers",
+		"price": 28.8,
+		"product_id": 3,
+		"stock_level": 12
+	},
+	{
+		"name": "Bathroom organizers",
+		"price": 20.0,
+		"product_id": 4,
+		"stock_level": 0
+	},
+	{
+		"name": "Countertop organizers",
+		"price": 28.0,
+		"product_id": 5,
+		"stock_level": 0
+	}
+]
+
+
+http://127.0.0.1:5000/customeraccount
+
+[
+	{
+		"account_id": 2,
+		"customer_id": 3,
+		"password": "merrychris345@#@#!@!",
+		"username": "Amar kunwar"
+	}
+]
+
+Update requests:
+
+customers:
+..........
+
+http://127.0.0.1:5000/customers/2
+
+
+{
+		"customer_id": 2,
+		"email": "updatedsecondmail",
+		"name": "sinha",
+		"phone": "777238729"
+}
+
+http://127.0.0.1:5000/customers/by_name/sinha
+
+{
+		"customer_id": 2,
+		"email": "latestmail34@gmail.com",
+		"name": "sinha",
+		"phone": "777238729"
+}
+
+
+customeraccount:
+...............
+
+http://127.0.0.1:5000/customeraccount/3
+
+{	
+	"customer_id":2,
+	"username": "Shriya",
+	"password":"HotChocolate@!"
+}
+
+orders:
+........
+
+http://127.0.0.1:5000/orders/2
+
+{
+    "date": "2024-05-07",
+    "customer_id": 2,
+    "products": [
+        {
+            "product_id": 2,
+            "quantity": 5
+        },
+        {
+            "product_id": 3,
+            "quantity": 1
+        }
+    ]
+}
